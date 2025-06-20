@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Cá Nhân - Chia Sẻ Trải Nghiệm</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="navbar-glass">
+        <div class="container">
+            <a href="index.html" class="logo">huiinguyen</a>
+            <button class="hamburger-menu" id="hamburger-menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav id="main-nav"> <ul>
+                    <li><a href="index.html">Trang Chủ</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Liên Hệ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="hero-section">
+            <div class="hero-overlay">
+                <h1>Chào mừng đến với Blog Chia Sẻ Trải Nghiệm</h1>
+                <p>Nơi tôi ghi lại những hành trình, suy nghĩ và khoảnh khắc đáng nhớ.</p>
+            </div>
+        </section>
+
+        <section class="posts-grid container">
+            <div class="glass-card fade-in-on-scroll">
+                <img src="img/post-image1.jpg" alt="Ảnh minh họa bài viết 1" class="post-thumbnail">
+                <h2>Khám Phá Đà Nẵng: Thành Phố Của Những Cây Cầu</h2>
+                <p>Một chuyến đi đầy nắng và gió đến thành phố đáng sống nhất Việt Nam. Từ cầu Rồng phun lửa đến bán đảo Sơn Trà hoang sơ...</p>
+                <a href="posts/post1.html" class="btn glass-btn">Đọc thêm</a>
+            </div>
+
+            <div class="glass-card fade-in-on-scroll">
+                <img src="img/post-image2.jpg" alt="Ảnh minh họa bài viết 2" class="post-thumbnail">
+                <h2>Hành Trình Học Lập Trình Đầu Tiên Của Tôi</h2>
+                <p>Những khó khăn và niềm vui khi bắt đầu dấn thân vào thế giới code. Từ cú pháp cơ bản đến dự án đầu tay...</p>
+                <a href="posts/post2.html" class="btn glass-btn">Đọc thêm</a>
+            </div>
+
+            </section>
+    </main>
+<script>
+        // JavaScript cho Hamburger Menu
+        const hamburgerMenu = document.getElementById('hamburger-menu');
+        const mainNav = document.getElementById('main-nav');
+
+        hamburgerMenu.addEventListener('click', () => {
+            mainNav.classList.toggle('nav-active');
+            hamburgerMenu.querySelector('i').classList.toggle('fa-bars');
+            hamburgerMenu.querySelector('i').classList.toggle('fa-times'); // Thay đổi icon X
+        });
+
+        // Đóng menu khi click vào một liên kết (chỉ trên di động)
+        mainNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (mainNav.classList.contains('nav-active')) {
+                    mainNav.classList.remove('nav-active');
+                    hamburgerMenu.querySelector('i').classList.remove('fa-times');
+                    hamburgerMenu.querySelector('i').classList.add('fa-bars');
+                }
+            });
+        });
+    </script>
+    <script src="js/main.js"></script>
+    <script src="js/effects.js"></script>
+</body>
+</html>
