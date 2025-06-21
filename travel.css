@@ -1,0 +1,418 @@
+/* Custom styles for Travel page */
+
+/* Loại bỏ phần hero-section và travel-intro cũ */
+.hero-travel, .travel-intro {
+    display: none;
+}
+
+/* New Statistics Section */
+.statistics-section {
+    padding-top: 80px;
+    padding-bottom: 60px;
+    text-align: center;
+}
+
+.stats-container {
+    padding: 30px;
+    margin-top: 40px;
+    /* Kế thừa glass-card properties */
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* Khoảng cách giữa các hàng */
+}
+
+.stats-top-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Điều chỉnh minmax cho 3 cột */
+    gap: 25px;
+}
+
+.stat-box {
+    text-align: center;
+    padding: 25px;
+    border-radius: 15px; /* Consistent with glass-card */
+    background: rgba(255, 255, 255, 0.05); /* Nền nhẹ cho các ô con */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.stat-box h3 {
+    font-size: 1.5em;
+    color: #8be9fd;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Khoảng cách giữa chữ và icon */
+}
+
+.stat-box p {
+    font-size: 1.8em;
+    font-weight: 600;
+    color: #f8f8f2;
+}
+
+.stat-box span {
+    color: #bd93f9; /* Purple for numbers */
+}
+
+.rank-icon {
+    color: #f1fa8c; /* Màu vàng cho icon rank */
+    font-size: 1.2em;
+}
+
+.score-icon {
+    color: #ff7f50; /* Màu cam cháy cho icon lửa */
+    font-size: 1.2em; /* Kích thước tương tự icon rank */
+}
+
+.current-rank-box {
+    cursor: pointer; /* Thay đổi con trỏ chuột để báo hiệu có thể click */
+}
+
+
+/* Provinces List - existing styles, ensure padding */
+.provinces-list {
+    padding: 60px 0;
+}
+
+.provinces-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.province-card {
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 30px;
+    position: relative;
+    overflow: hidden; /* Important for the slide-down effect */
+}
+
+.province-card h3 {
+    font-size: 1.8em;
+    color: #8be9fd;
+    margin-bottom: 15px;
+}
+
+.province-card p {
+    font-size: 1.1em;
+    color: #f0f0f0;
+    margin-bottom: 20px;
+}
+
+.progress-bar-container {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    height: 10px;
+    overflow: hidden;
+    margin-top: 15px;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #bd93f9;
+    width: 0%;
+    border-radius: 5px;
+    transition: width 0.5s ease-in-out;
+}
+
+/* New styles for the collapsible places list */
+.places-list-container {
+    max-height: 0; /* Bắt đầu với chiều cao 0 để ẩn */
+    overflow: hidden;
+    transition: max-height 0.5s ease-out, padding 0.5s ease-out; /* Thêm transition cho padding */
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 20px; /* Thêm một chút khoảng cách từ progress bar */
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Đường kẻ phân cách */
+}
+
+.province-card.expanded .places-list-container {
+    max-height: 500px; /* Chiều cao tối đa để hiển thị, điều chỉnh nếu cần */
+    padding-top: 15px; /* Padding trên khi hiển thị */
+    padding-bottom: 15px; /* Padding dưới khi hiển thị */
+}
+
+.places-list-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left; /* Căn trái cho danh sách địa điểm */
+}
+
+.places-list-container li {
+    background: rgba(255, 255, 255, 0.03); /* Nền nhẹ cho từng mục */
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.95em;
+    color: #e0e0e0;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.places-list-container li:last-child {
+    margin-bottom: 0;
+}
+
+.places-list-container li:hover {
+    background: rgba(139, 233, 253, 0.1);
+    transform: translateY(-2px);
+}
+
+.places-list-container li.completed {
+    background-color: rgba(80, 250, 123, 0.1); /* Nền xanh nhạt hơn khi hoàn thành */
+    color: #50fa7b; /* Chữ màu xanh lá cây */
+    text-decoration: line-through; /* Gạch ngang chữ */
+}
+
+.places-list-container li.completed::after {
+    content: '\2713'; /* Dấu tick */
+    color: #50fa7b; /* Màu xanh lá cây cho dấu tick */
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.province-reward {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.1);
+    font-size: 0.9em;
+    color: #f8f8f2;
+    text-align: center;
+}
+
+.province-reward h4 {
+    color: #50fa7b; /* Màu xanh lá cho tiêu đề chúc mừng */
+    margin-bottom: 5px;
+}
+
+.province-reward p span {
+    font-weight: 600;
+    color: #bd93f9;
+}
+
+/* --- Modal Styles (for Rank List) --- */
+.modal {
+    display: none; /* Hidden by default - THIS IS THE KEY CHANGE for auto-popup */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+    backdrop-filter: blur(5px); /* Blur background */
+    -webkit-backdrop-filter: blur(5px);
+    display: flex; /* Use flex to center content */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+}
+
+.modal-content {
+    position: relative; /* For close button positioning */
+    margin: auto; /* Centering */
+    padding: 40px;
+    border-radius: 20px;
+    width: 90%; /* Smaller on mobile */
+    max-width: 500px; /* Max width for larger screens */
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+    animation: fadeInScale 0.3s ease-out; /* Animation for modal entry */
+    text-align: center;
+}
+
+.modal-content h3 {
+    font-size: 2em;
+    color: #8be9fd;
+    margin-bottom: 25px;
+    text-shadow: 0 0 5px rgba(139, 233, 253, 0.5);
+}
+
+.close-button {
+    color: #f8f8f2;
+    font-size: 2.5em;
+    font-weight: bold;
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #ff5555;
+    text-decoration: none;
+}
+
+.rank-list-modal {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.rank-list-modal li {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px 20px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between; /* To place name/score on opposite ends */
+    align-items: center; /* Vertically align */
+    font-size: 1.1em; /* Slightly larger font */
+    color: #e0e0e0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.rank-list-modal li:last-child {
+    margin-bottom: 0;
+}
+
+/* Remove these if you want name and score on one line and no description */
+/*
+.rank-list-modal li span.rank-score-modal {
+    font-weight: 600;
+    color: #bd93f9;
+    font-size: 1.1em;
+    margin-bottom: 5px;
+}
+.rank-list-modal li strong {
+    color: #f8f8f2;
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+.rank-list-modal li .rank-description {
+    font-size: 0.9em;
+    color: #aaaaaa;
+}
+*/
+
+/* New styling for simplified rank list item */
+.rank-list-modal li .rank-name {
+    font-weight: 600;
+    color: #f8f8f2; /* White color for rank name */
+    font-size: 1.2em;
+}
+
+.rank-list-modal li .rank-min-score {
+    font-weight: 600;
+    color: #bd93f9; /* Purple for score */
+    font-size: 1.1em;
+    margin-left: 10px; /* Space between name and score */
+}
+
+
+.rank-list-modal li.current-rank-highlight {
+    background-color: rgba(189, 147, 249, 0.2); /* Nổi bật rank hiện tại */
+    border-color: #bd93f9;
+    box-shadow: 0 0 10px rgba(189, 147, 249, 0.3);
+}
+
+/* Animations */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .stats-container {
+        padding: 20px;
+    }
+    .stats-top-row {
+        grid-template-columns: 1fr; /* Stack vertically on small screens */
+    }
+    .stat-box {
+        padding: 20px;
+    }
+    .stat-box h3 {
+        font-size: 1.3em;
+    }
+    .stat-box p {
+        font-size: 1.6em;
+    }
+
+    .provinces-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-content {
+        padding: 25px 20px;
+        width: 95%; /* Adjust width for smaller screens */
+    }
+    .modal-content h3 {
+        font-size: 1.6em;
+    }
+    .close-button {
+        font-size: 2em;
+        top: 10px;
+        right: 15px;
+    }
+    .rank-list-modal li {
+        padding: 12px 15px;
+        font-size: 1em; /* Adjusted for mobile */
+    }
+    .rank-list-modal li .rank-name {
+        font-size: 1.1em;
+    }
+    .rank-list-modal li .rank-min-score {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-container {
+        padding: 15px;
+    }
+    .stats-top-row {
+        grid-template-columns: 1fr; /* Stack all stat boxes */
+    }
+    .stat-box h3 {
+        font-size: 1.1em;
+    }
+    .stat-box p {
+        font-size: 1.4em;
+    }
+
+    .province-card h3 {
+        font-size: 1.5em;
+    }
+    .province-card p {
+        font-size: 0.95em;
+    }
+    .rank-list-modal li {
+        font-size: 0.9em; /* Further adjusted for very small screens */
+        padding: 10px;
+    }
+    .rank-list-modal li .rank-name {
+        font-size: 1em;
+    }
+    .rank-list-modal li .rank-min-score {
+        font-size: 0.9em;
+    }
+}

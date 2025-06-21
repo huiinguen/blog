@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel - Khám Phá Việt Nam</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/travel.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="navbar-glass">
+        <div class="container">
+            <a href="index.html" class="logo">huiinguyen</a>
+            <button class="hamburger-menu" id="hamburger-menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="index.html">Trang Chủ</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="travel.html" class="nav-active">Travel</a></li>
+                    <li><a href="contact.html">Liên Hệ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="statistics-section section-padding fade-in-on-scroll">
+            <div class="container">
+                <h2 class="section-title">Thống Kê Hành Trình</h2>
+                <div class="stats-container glass-card"> <div class="stats-top-row">
+                        <div class="stat-box completed-provinces-box">
+                            <h3>Tỉnh Đã Hoàn Thành</h3>
+                            <p><span id="completed-provinces">0</span>/<span id="total-provinces">0</span> tỉnh</p>
+                        </div>
+                        <div class="stat-box current-rank-box" id="rank-item">
+                            <h3>Hạng Hiện Tại <i class="fas fa-trophy rank-icon"></i></h3>
+                            <p><span id="current-rank">Chưa xếp hạng</span></p>
+                        </div>
+                        <div class="stat-box total-score-box">
+                            <h3>Tổng Điểm <i class="fas fa-fire-alt score-icon"></i></h3>
+                            <p><span id="total-score">0</span> điểm</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="provinces-list section-padding">
+            <div class="container">
+                <h2 class="section-title">Các Tỉnh Thành Đã Ghé Thăm</h2>
+                <div class="provinces-grid" id="provinces-grid">
+                    </div>
+            </div>
+        </section>
+    </main>
+
+
+    <footer class="footer-glass">
+        <div class="container">
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/effects.js"></script>
+    <script src="js/travel.js"></script>
+
+    <script>
+        // JavaScript cho Hamburger Menu (lặp lại để đảm bảo hoạt động trên mọi trang)
+        const hamburgerMenu = document.getElementById('hamburger-menu');
+        const mainNav = document.getElementById('main-nav');
+
+        hamburgerMenu.addEventListener('click', () => {
+            mainNav.classList.toggle('nav-active');
+            hamburgerMenu.querySelector('i').classList.toggle('fa-bars');
+            hamburgerMenu.querySelector('i').classList.toggle('fa-times');
+        });
+
+        mainNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768 && mainNav.classList.contains('nav-active')) {
+                    mainNav.classList.remove('nav-active');
+                    hamburgerMenu.querySelector('i').classList.remove('fa-times');
+                    hamburgerMenu.querySelector('i').classList.add('fa-bars');
+                }
+            });
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768 && mainNav.classList.contains('nav-active')) {
+                mainNav.classList.remove('nav-active');
+                hamburgerMenu.querySelector('i').classList.remove('fa-times');
+                hamburgerMenu.querySelector('i').classList.add('fa-bars');
+            }
+        });
+    </script>
+</body>
+</html>
