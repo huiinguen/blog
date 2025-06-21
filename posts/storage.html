@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ổ Cứng Lâu Không Dùng Có Mất Dữ Liệu Không? - Blog Công Nghệ</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+<header class="navbar-glass">
+  <div class="container">
+    <a href="../index.html" class="logo">huiinguyen</a>
+    <button class="hamburger-menu" id="hamburger-menu">
+      <i class="fas fa-bars"></i>
+    </button>
+    <nav id="main-nav">
+      <ul>
+        <li><a href="../index.html">Trang Chủ</a></li>
+        <li><a href="../blog.html">Blog</a></li>
+        <li><a href="../travel.html">khám phá</a></li>
+        <li><a href="../contact.html">Liên Hệ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="sticky-back-button fade-in-on-load">
+  <button class="btn glass-btn" onclick="window.location.href='../blog.html'">
+    <i class="fas fa-arrow-left"></i> Quay lại Blog
+  </button>
+</div>
+
+<main class="main-content post-detail">
+  <section class="container glass-card fade-in-on-scroll post-content-centered">
+    <h1 class="post-title">Ổ Cứng Không Sử Dụng Lâu Có Gây Mất Dữ Liệu?</h1>
+    <img src="../img/storage-degrade.jpg" alt="Ổ cứng lưu trữ lâu ngày" class="post-full-image">
+
+    <div class="post-content">
+      <h2>1. Giới thiệu vấn đề</h2>
+      <p>Nhiều người tin rằng việc cất giữ ổ cứng, USB hay thẻ nhớ ở nơi an toàn là đủ để bảo toàn dữ liệu. Tuy nhiên, theo một số nghiên cứu và tài liệu kỹ thuật từ các nhà sản xuất như <strong>Seagate, Intel, Micron</strong>, thực tế không hoàn toàn như vậy.</p>
+
+      <h2>2. Tại sao dữ liệu có thể mất dù không sử dụng?</h2>
+      <p>Với ổ cứng <strong>HDD</strong> (cơ), nếu không dùng lâu ngày, dầu bôi trơn có thể khô, đầu từ có thể dính hoặc lỗi cơ học do oxi hóa, gây mất khả năng truy xuất dữ liệu.</p>
+      <p>Đối với ổ <strong>SSD/USB/Flash</strong>, dữ liệu được lưu bằng điện tích trên transistor. Nếu không cấp điện lâu ngày (thường 1–3 năm tùy chất lượng và môi trường), các bit có thể “rò rỉ điện” và mất trạng thái ban đầu – từ đó gây mất dữ liệu.</p>
+
+      <h2>3. Nghiên cứu từ Intel và JEDEC</h2>
+      <p>Trong một báo cáo của <strong>Intel SSD Reliability</strong> (năm 2010), thời gian giữ dữ liệu không cấp điện (data retention time) ở SSD consumer là khoảng <strong>1 năm ở nhiệt độ < 30°C</strong>, và có thể <strong>giảm còn vài tuần nếu nhiệt độ cao (>40°C)</strong>.</p>
+      <p>Chuẩn <strong>JEDEC JESD218A</strong> cũng định nghĩa độ bền lưu trữ phụ thuộc vào số lần ghi và điều kiện môi trường.</p>
+
+      <img src="../img/ssd-degradation.jpg" alt="Lưu trữ SSD và mất dữ liệu" class="content-image">
+      <figcaption>SSD cần cấp nguồn định kỳ để đảm bảo giữ điện tích ổn định</figcaption>
+
+      <h2>4. Cách bảo vệ dữ liệu lưu trữ lâu dài</h2>
+      <ul>
+        <li><strong>Sao lưu định kỳ</strong> vào nhiều thiết bị và nền tảng khác nhau (Cloud, ổ ngoài).</li>
+        <li><strong>Khởi động và kiểm tra ổ định kỳ</strong> (6 tháng/lần) để tránh lỗi rò dữ liệu.</li>
+        <li><strong>Bảo quản nơi khô ráo, nhiệt độ mát (~25°C)</strong>, tránh ánh sáng và từ trường mạnh.</li>
+        <li>Sử dụng thiết bị lưu trữ chuyên dụng cho lưu trữ lâu dài như <strong>M-Disc</strong>, tape, hoặc server lưu trữ.</li>
+      </ul>
+
+      <h2>5. Kết luận</h2>
+      <p>Việc “bỏ quên” ổ cứng hay USB trong tủ không phải là một cách lưu trữ lý tưởng. Công nghệ lưu trữ hiện đại vẫn có giới hạn vật lý. Để đảm bảo dữ liệu quan trọng không bị mất, người dùng nên chủ động kiểm tra, sao lưu và bảo quản đúng cách theo khuyến cáo kỹ thuật.</p>
+    </div>
+  </section>
+</main>
+
+<script src="../js/main.js"></script>
+<script src="../js/effects.js"></script>
+</body>
+</html>
