@@ -242,29 +242,79 @@ nav ul li a:hover::after {
     padding-bottom: 5px;
 }
 
+/* Trong style.css */
+
+/* CSS cho ảnh trong nội dung bài viết */
 .post-content img.content-image {
-    margin: 20px auto;
+    display: block; /* Quan trọng để margin auto hoạt động và ảnh là block element */
+    max-width: 500px; /* Giới hạn chiều rộng tối đa cho ảnh trên màn hình lớn */
+    width: 100%; /* Đảm bảo ảnh co giãn theo chiều rộng của container */
+    height: auto; /* Giữ tỷ lệ khung hình tự động */
+    margin: 30px auto; /* Căn giữa ảnh và tạo khoảng cách trên dưới */
     border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    object-fit: contain; /* Hoặc 'cover' tùy thuộc vào bạn muốn ảnh hiển thị như thế nào */
 }
 
+/* CSS cho chú thích ảnh (figcaption) */
 .post-content figcaption {
-    text-align: center;
+    text-align: center; /* Căn giữa chú thích */
     font-style: italic;
-    color: #bbb;
-    margin-top: -10px;
-    margin-bottom: 20px;
+    color: #aaa;
+    margin-top: -20px; /* Di chuyển chú thích lên gần ảnh hơn */
+    margin-bottom: 30px; /* Khoảng cách với nội dung tiếp theo */
     font-size: 0.9em;
 }
 
-/* Sticky Back Button */
-.sticky-back-button {
-    position: fixed; /* Cố định vị trí */
-    top: 100px; /* Cách top 100px (có thể điều chỉnh) */
-    left: 20px; /* Cách lề trái 20px */
-    z-index: 999; /* Đảm bảo nút nằm trên các phần tử khác */
+
+/* Điều chỉnh trong media query cho màn hình nhỏ */
+@media (max-width: 768px) {
+    /* Đảm bảo khối nội dung chính được căn chỉnh */
+    .post-detail-container {
+        padding: 0 15px; /* Giảm padding hai bên cho màn hình nhỏ hơn */
+        margin: 20px auto; /* Điều chỉnh margin */
+    }
+
+    /* Quan trọng: Điều chỉnh ảnh trong nội dung cho màn hình nhỏ */
+    .post-content img.content-image {
+        width: 100%; /* Chiếm toàn bộ chiều rộng của container trên mobile */
+        max-width: 100%; /* Không giới hạn max-width nữa */
+        height: auto; /* Để chiều cao tự động theo tỷ lệ */
+        /* object-fit: contain; vẫn giữ nguyên */
+        margin: 20px auto; /* Giảm khoảng cách */
+    }
+
+    /* Đảm bảo figcaption vẫn hoạt động tốt */
+    .post-content figcaption {
+        margin-top: -15px; /* Điều chỉnh lại khoảng cách */
+        margin-bottom: 20px;
+        font-size: 0.85em;
+    }
 }
+
+/* Sticky Back Button */
+/* Trong style.css */
+
+/* Áp dụng cho cả màn hình lớn và màn hình nhỏ theo logic mới */
+.sticky-back-button {
+    position: fixed; /* Giữ cố định */
+    bottom: 30px; /* Đặt cách đáy 30px (có thể điều chỉnh) */
+    left: 50%; /* Dịch sang trái 50% của cha */
+    transform: translateX(-50%); /* Dịch lại 50% chiều rộng của chính nó để căn giữa */
+    z-index: 1000; /* Đảm bảo nút nằm trên cùng */
+    /* top và right không cần thiết nữa nếu dùng bottom và left/transform */
+}
+
+/* Media query cho màn hình nhỏ: Nếu bạn muốn có một khoảng cách khác trên mobile
+   thì có thể ghi đè, nếu không thì đoạn trên đã đủ cho cả hai */
+/*
+@media (max-width: 768px) {
+    .sticky-back-button {
+        bottom: 20px; // Ví dụ: muốn nó gần đáy hơn một chút trên mobile
+        // Các thuộc tính left và transform: translateX(-50%) vẫn hoạt động tốt
+    }
+}
+*/
 
 .sticky-back-button .btn {
     display: flex;
@@ -613,12 +663,15 @@ footer {
         padding: 8px 15px;
     }
     .blog-list-item {
-        flex-direction: column;
+        flex-direction: column; /* Chuyển sang bố cục cột */
         text-align: center;
+        align-items: center; /* Căn giữa các mục con theo chiều ngang (ảnh và nội dung) */
     }
-    .blog-list-thumbnail {
-        width: 100%;
-        height: auto;
+       .blog-list-thumbnail {
+        width: 100%; /* Đảm bảo ảnh chiếm toàn bộ chiều rộng có sẵn */
+        max-width: 350px; /* Giới hạn chiều rộng tối đa cho ảnh trên mobile để không quá to */
+        height: 220px; /* Đặt một chiều cao cố định để kiểm soát kích thước */
+        object-fit: cover; /* Quan trọng: Đảm bảo ảnh giữ tỷ lệ và lấp đầy khung hình, cắt bỏ phần thừa */
         margin-right: 0;
         margin-bottom: 15px;
     }
@@ -668,5 +721,34 @@ footer {
     .filter-btn {
         padding: 10px 20px;
         font-size: 0.95em;
+    }
+}
+/* CSS cho video responsive */
+.video-responsive {
+    position: relative;
+    padding-bottom: 56.25%; /* Tỷ lệ khung hình 16:9 (chiều cao = 56.25% của chiều rộng) */
+    height: 0;
+    overflow: hidden;
+    margin: 30px auto; /* Căn giữa và tạo khoảng cách */
+    max-width: 600px; /* Giới hạn chiều rộng tối đa như ảnh */
+    border-radius: 10px; /* Thêm bo góc cho khung video */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.video-responsive iframe,
+.video-responsive object,
+.video-responsive embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Điều chỉnh cho mobile nếu cần */
+@media (max-width: 768px) {
+    .video-responsive {
+        margin: 20px auto; /* Giảm khoảng cách trên mobile */
+        max-width: 100%; /* Đảm bảo video chiếm toàn bộ chiều rộng có thể */
     }
 }
