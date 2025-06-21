@@ -221,7 +221,7 @@
     background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
     backdrop-filter: blur(5px); /* Blur background */
     -webkit-backdrop-filter: blur(5px);
-    display: flex; /* Use flex to center content */
+    /* display: flex;  <-- Xóa hoặc chú thích dòng này */
     align-items: center; /* Center vertically */
     justify-content: center; /* Center horizontally */
 }
