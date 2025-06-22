@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liên Hệ - Blog Cá Nhân</title>
+    <title>Blog Của Tôi - Chia Sẻ Trải Nghiệm</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/components.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Open+Sans:wght@300;400&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+
 <body>
     <header class="navbar-glass">
         <div class="container">
@@ -16,7 +20,8 @@
             <button class="hamburger-menu" id="hamburger-menu">
                 <i class="fas fa-bars"></i>
             </button>
-            <nav id="main-nav"> <ul>
+            <nav id="main-nav">
+                <ul>
                     <li><a href="index.html">Trang Chủ</a></li>
                     <li><a href="blog.html">Blog</a></li>
                     <li><a href="travel.html">Travel</a></li>
@@ -27,21 +32,53 @@
     </header>
 
     <main class="main-content">
-        <section class="container glass-card fade-in-on-scroll contact-section">            
+        <section class="container blog-list-section">
+            <h1 class="text-center">Tìm hiểu những thứ cần biết</h1>            
 
-            <div class="contact-info-block">
-                <div class="contact-item">
-                    <h3>Email</h3>
-                    <p><a href="mailto:your.email@example.com" class="btn glass-btn">nguyenhuy1832006@gmail.com</a></p>
-                </div>
-                <div class="contact-item">
-                    <h3>Mạng Xã Hội</h3>                    
-                    <div class="social-links-contact">
-                        <a href="#" class="btn glass-btn-social"><i class="fab fa-facebook-f"></i> Facebook</a>
-                        <a href="#" class="btn glass-btn-social"><i class="fab fa-instagram"></i> Instagram</a>        
+            <div class="category-filter text-center">
+                <button class="filter-btn active" data-filter="all">Tất Cả</button>
+                <button class="filter-btn" data-filter="du-lich">Du lịch</button>
+                <button class="filter-btn" data-filter="cong-nghe">Công Nghệ</button>
+            </div>
+
+            <div class="blog-list">
+                <div class="glass-card blog-list-item fade-in-on-scroll" data-category="du-lich">                
+                    <div class="blog-list-content">
+                        <h2><a href="posts/post1.html">Danh sách địa điểm đáng đi ở ĐÀ NẴNG</a></h2>
+                        <p class="post-meta">Ngày: 10 tháng 12, 2024</p>
+                        <p>Nhấn đọc thêm để biết nhiều hơn</p>
+                        <a href="posts/post1.html" class="btn glass-btn-small">Đọc thêm</a>
                     </div>
                 </div>
-            </div>            
+
+
+                <div class="glass-card blog-list-item fade-in-on-scroll" data-category="cong-nghe">                    
+                    <div class="blog-list-content">
+                        <h2><a href="posts/tech-issues.html">Những Vấn Nạn Công Nghệ Phổ Biến</a></h2>
+                        <p class="post-meta">Ngày: 10 tháng 6, 2025</p>
+                        <p>Cách Khắc Phục</p>
+                        <a href="posts/tech-issues.html" class="btn glass-btn-small">Đọc thêm</a>
+                    </div>
+                </div>
+
+                <div class="glass-card blog-list-item fade-in-on-scroll" data-category="cong-nghe">                
+                    <div class="blog-list-content">
+                        <h2><a href="posts/storage.html">Ổ cứng không sử dụng lâu ngày có bị mất dữ liệu không?</a></h2>
+                        <p class="post-meta">Ngày: 10 tháng 6, 2025</p>
+                        <p>Cách Khắc Phục</p>
+                        <a href="posts/storage.html" class="btn glass-btn-small">Đọc thêm</a>
+                    </div>
+                </div>
+
+                <div class="glass-card blog-list-item fade-in-on-scroll" data-category="du-lich">                    
+                    <div class="blog-list-content">
+                        <h2><a href="posts/may.html">Các địa điểm săn mây đẹp ở đà nẵng</a></h2>
+                        <p class="post-meta">Ngày: 10 tháng 6, 2025</p>
+                        <p>nhấn đọc thêm</p>
+                        <a href="posts/may.html" class="btn glass-btn-small">Đọc thêm</a>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
@@ -76,7 +113,35 @@
             }
         });
     </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const blogItems = document.querySelectorAll('.blog-list-item');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Xóa class 'active' khỏi tất cả các nút
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Thêm class 'active' vào nút vừa click
+                    button.classList.add('active');
+
+                    const filter = button.dataset.filter; // Lấy giá trị data-filter
+
+                    blogItems.forEach(item => {
+                        const category = item.dataset.category;
+                        if (filter === 'all' || category === filter) {
+                            item.style.display = 'flex'; // Hiển thị bài viết
+                        } else {
+                            item.style.display = 'none'; // Ẩn bài viết
+                        }
+                    });
+                });
+            });
+        });
+    </script>
     <script src="js/main.js"></script>
     <script src="js/effects.js"></script>
 </body>
+
 </html>
