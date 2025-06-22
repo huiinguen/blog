@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,12 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/travel.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Open+Sans:wght@300;400&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+
 <body>
     <header class="navbar-glass">
         <div class="container">
@@ -35,16 +39,16 @@
                 <div class="stats-container glass-card">
                     <div class="stats-top-row">
                         <div class="stat-box completed-provinces-box">
-                            <h3>Tỉnh Đã Hoàn Thành</h3>
-                            <p><span id="completed-provinces">0</span>/<span id="total-provinces">0</span> tỉnh</p>
+                            <h3> <i class="fas fa-house-chimney home-icon"></i></h3>
+                            <p><span id="completed-provinces">0</span>/<span id="total-provinces">0</span></p>
                         </div>
                         <div class="stat-box current-rank-box" id="rank-item">
-                            <h3>Hạng Hiện Tại <i class="fas fa-trophy rank-icon"></i></h3>
+                            <h3><i class="fas fa-trophy rank-icon"></i></h3>
                             <p><span id="current-rank">Chưa xếp hạng</span></p>
                         </div>
                         <div class="stat-box total-score-box">
-                            <h3>Tổng Điểm <i class="fas fa-fire-alt score-icon"></i></h3>
-                            <p><span id="total-score">0</span> điểm</p>
+                            <h3>Chuỗi <i class="fas fa-fire-alt score-icon"></i></h3>
+                            <p><span id="total-score">0</span></p>
                         </div>
                     </div>
                 </div>
@@ -55,18 +59,27 @@
             <div class="container">
                 <h2 class="section-title">Các Tỉnh Thành Đã Ghé Thăm</h2>
                 <div class="provinces-grid" id="provinces-grid">
-                    </div>
+                </div>
             </div>
         </section>
+
+        <div id="milestone-modal" class="modal">
+    <div class="modal-content glass-card">
+        <span class="close-button" id="close-milestone-modal">&times;</span>
+        <h3 id="milestone-title">Chúc mừng!</h3>
+        <p id="milestone-message"></p>
+        <div class="confetti-effect" id="confetti-effect"></div>
+    </div>
+</div>
     </main>
 
 
     <div id="rank-modal" class="modal">
         <div class="modal-content glass-card">
             <span class="close-button" id="close-rank-modal">&times;</span>
-            <h3>Bảng Xếp Hạng Du Lịch</h3>
+            <h3>Cấp độ xếp hạng</h3>
             <ul id="rank-list" class="rank-list-modal">
-                </ul>
+            </ul>
         </div>
     </div>
 
@@ -104,4 +117,5 @@
         });
     </script>
 </body>
+
 </html>
