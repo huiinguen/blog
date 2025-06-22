@@ -36,7 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 { id: 'dn-sonnt', name: 'Bán đảo Sơn Trà', completed: false },
                 { id: 'dn-linhung', name: 'Chùa Linh Ứng', completed: false },
                 { id: 'dn-reunamo', name: 'Bãi biển rêu Nam Ô', completed: false },
-                { id: 'dn-haivan', name: 'Đèo Hải Vân', completed: false },
+                { id: 'dn-haivan', name: 'Đèo Hải Vân', completed: false },                
+                { id: 'dn-hoabac', name: 'Hòa Bắc', completed: false },
             ]
         },
         'hue': {
@@ -514,30 +515,37 @@ document.addEventListener('DOMContentLoaded', () => {
         saveData();
     };
 
-    // Rank System - Updated with more levels and higher scores
     const getRank = (score) => {
-        if (score < 10) return "Tân Binh Du Lịch";
-        if (score < 30) return "Lữ Khách Tiềm Năng";
-        if (score < 60) return "Nhà Thám Hiểm";
-        if (score < 100) return "Chuyên Gia Du Lịch";
-        if (score < 150) return "Bậc Thầy Khám Phá";
-        if (score < 200) return "Anh Hùng Khắp Nơi";
-        if (score < 300) return "Đại Sứ Du Lịch";
-        return "Huyền Thoại Du Lịch Việt Nam";
-    };
+    if (score < 10) return "Tân Binh Du Lịch";
+    if (score < 30) return "Lữ Khách Tiềm Năng";
+    if (score < 60) return "Nhà Thám Hiểm";
+    if (score < 100) return "Chuyên Gia Du Lịch";
+    if (score < 150) return "Bậc Thầy Khám Phá";
+    if (score < 200) return "Anh Hùng Khắp Nơi";
+    if (score < 250) return "Đại Sứ Du Lịch"; 
+    if (score < 350) return "Thần Hành Giả"; 
+    if (score < 500) return "Kim Cương Lữ Khách"; 
+    if (score < 700) return "Tứ Phương Hào Kiệt"; 
+    if (score < 1000) return "Minh Chủ Xê Dịch"; 
+    return "Huyền Thoại Du Lịch Việt Nam";
+};
 
-    const getRankList = () => {
-        return [
-            { score: 0, name: "Tân Binh Du Lịch", description: "Bắt đầu hành trình khám phá!" },
-            { score: 10, name: "Lữ Khách Tiềm Năng", description: "Những bước chân đầu tiên đầy hứa hẹn." },
-            { score: 30, name: "Nhà Thám Hiểm", description: "Bạn đã khám phá nhiều vùng đất mới." },
-            { score: 60, name: "Chuyên Gia Du Lịch", description: "Kinh nghiệm của bạn đang tăng lên!" },
-            { score: 100, name: "Bậc Thầy Khám Phá", description: "Không có nơi nào là quá xa lạ với bạn." },
-            { score: 150, name: "Anh Hùng Khắp Nơi", description: "Bạn là người hùng trên mọi nẻo đường." },
-            { score: 200, name: "Đại Sứ Du Lịch", description: "Thúc đẩy niềm đam mê xê dịch đến mọi người." },
-            { score: 300, name: "Huyền Thoại Du Lịch Việt Nam", description: "Bạn đã chinh phục gần như mọi danh lam thắng cảnh!" }
-        ];
-    };
+const getRankList = () => {
+    return [
+        { score: 0, name: "Tân Binh Du Lịch", description: "Bắt đầu hành trình khám phá!" },
+        { score: 10, name: "Lữ Khách Tiềm Năng", description: "Những bước chân đầu tiên đầy hứa hẹn." },
+        { score: 30, name: "Nhà Thám Hiểm", description: "Bạn đã khám phá nhiều vùng đất mới." },
+        { score: 60, name: "Chuyên Gia Du Lịch", description: "Kinh nghiệm của bạn đang tăng lên!" },
+        { score: 100, name: "Bậc Thầy Khám Phá", description: "Không có nơi nào là quá xa lạ với bạn." },
+        { score: 150, name: "Anh Hùng Khắp Nơi", description: "Bạn là người hùng trên mọi nẻo đường." },
+        { score: 200, name: "Đại Sứ Du Lịch", description: "Thúc đẩy niềm đam mê xê dịch đến mọi người." },
+        { score: 250, name: "Thần Hành Giả", description: "Bước chân bạn nhẹ như gió, khám phá không ngừng nghỉ!" },
+        { score: 350, name: "Kim Cương Lữ Khách", description: "Đã đạt đến đẳng cấp cao, tự tin chinh phục mọi nẻo đường." },
+        { score: 500, name: "Tứ Phương Hào Kiệt", description: "Danh tiếng vang xa, bạn là bậc thầy của những chuyến đi." },
+        { score: 700, name: "Minh Chủ Xê Dịch", description: "Dẫn dắt cộng đồng, mọi hành trình đều được bạn khai phá." },
+        { score: 1000, name: "Huyền Thoại Du Lịch Việt Nam", description: "Bạn đã chinh phục gần như mọi danh lam thắng cảnh và trở thành biểu tượng!" }
+    ];
+};
 
     // --- Render Functions ---
     const renderProvinces = () => {
@@ -554,7 +562,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             provinceCard.innerHTML = `
                 <h3>${province.name}</h3>
-                <p>Đã đi: <span class="places-visited">${completedPlaces}</span>/<span class="places-total">${totalPlaces}</span> địa điểm</p>
+                <p><span class="places-visited">${completedPlaces}</span>/<span class="places-total">${totalPlaces}</span></p>
                 <div class="progress-bar-container">
                     <div class="progress-bar" style="width: ${progressPercentage}%;"></div>
                 </div>
@@ -683,9 +691,7 @@ document.addEventListener('DOMContentLoaded', () => {
             listItem.innerHTML = `
                 <span class="rank-name">${rank.name}</span>
                 <span class="rank-min-score">${rank.score}+ Điểm</span>
-            `;
-            // Description is now omitted for brevity as per request
-            // <span class="rank-description">${rank.description}</span>
+            `;            
 
             rankListElement.appendChild(listItem);
         });
@@ -744,3 +750,52 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     applyFadeInEffect(); // Apply on initial load
 });
+// Dữ liệu giả định cho điểm số và mốc
+let totalScore = 0; // Đây là biến điểm số hiện tại của bạn
+const milestoneInterval = 10;
+let lastAchievedMilestone = 0; // Biến để theo dõi mốc cuối cùng đã đạt được
+
+const milestoneModal = document.getElementById('milestone-modal');
+const closeMilestoneModalBtn = document.getElementById('close-milestone-modal');
+const milestoneTitle = document.getElementById('milestone-title');
+const milestoneMessage = document.getElementById('milestone-message');
+const confettiEffect = document.getElementById('confetti-effect');
+const totalScoreSpan = document.getElementById('total-score'); // Lấy span hiển thị tổng điểm
+
+// Hàm cập nhật điểm số và kiểm tra mốc
+function updateScore(newScore) {
+    totalScore = newScore;
+    totalScoreSpan.textContent = totalScore; // Cập nhật hiển thị điểm số
+
+    // Kiểm tra mốc
+    const currentMilestone = Math.floor(totalScore / milestoneInterval) * milestoneInterval;
+
+    // Chỉ hiển thị modal nếu đã đạt một mốc mới và điểm số đủ lớn
+    if (currentMilestone > lastAchievedMilestone && currentMilestone > 0) {
+        lastAchievedMilestone = currentMilestone;
+        showMilestoneModal(currentMilestone);
+    }
+}
+
+function showMilestoneModal(milestone) {
+    milestoneTitle.textContent = `Chúc mừng bạn đã đạt chuỗi ${milestone}!`;
+    milestoneMessage.textContent = "Bạn thật tuyệt vời! Hãy tiếp tục khám phá nhé!";
+    milestoneModal.style.display = 'flex'; // Hiển thị modal
+
+    
+    triggerConfettiEffect(); // Gọi hàm tạo hiệu ứng pháo giấy
+}
+
+function closeMilestoneModal() {
+    milestoneModal.style.display = 'none';
+    clearConfettiEffect(); // Xóa hiệu ứng pháo giấy khi đóng
+}
+
+closeMilestoneModalBtn.addEventListener('click', closeMilestoneModal);
+window.addEventListener('click', (event) => {
+    if (event.target == milestoneModal) {
+        closeMilestoneModal();
+    }
+});
+
+
