@@ -232,7 +232,10 @@
     padding: 40px;
     border-radius: 20px;
     width: 90%; /* Smaller on mobile */
-    max-width: 500px; /* Max width for larger screens */
+    max-width: 500px;
+        /* Max width for larger screens */
+        max-height: 80vh;
+        overflow-y: auto;
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
     animation: fadeInScale 0.3s ease-out; /* Animation for modal entry */
     text-align: center;
@@ -363,6 +366,7 @@
 
     .modal-content {
         padding: 25px 20px;
+         max-height: 70vh;
         width: 95%; /* Adjust width for smaller screens */
     }
     .modal-content h3 {
@@ -415,4 +419,106 @@
     .rank-list-modal li .rank-min-score {
         font-size: 0.9em;
     }
+     .modal-content {
+        width: 95%; /* Điều chỉnh chiều rộng cho màn hình rất nhỏ */
+        max-height: 65vh; /* Điều chỉnh chiều cao tối đa cho màn hình rất nhỏ */
+        padding: 25px 15px; /* Giảm padding */
+    }
+}
+.completed-provinces-box .home-icon {
+    color: #f0f0f0; /* Màu sắc của icon */
+    margin-left: 8px;
+    font-size: 1.2em;
+}
+/* General Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px); /* Kính mờ cho nền */
+}
+
+.modal-content {
+    background: rgba(255, 255, 255, 0.1); /* Màu nền kính mờ */
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 30px;
+    margin: auto; /* Centered */
+    width: 80%; /* Could be more responsive */
+    max-width: 500px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    text-align: center;
+    position: relative;
+    animation: fadeInScale 0.3s ease-out;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Confetti Effect (Simple example) */
+.confetti-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none; /* Allow clicks through */
+}
+
+/* You would typically use JavaScript to generate confetti particles */
+/* For a more robust confetti, consider a JS library like confetti-js */
+/* CSS cho mảnh pháo giấy (thêm vào travel.css hoặc style.css) */
+@keyframes fall {
+    0% {
+        transform: translateY(-20px) translateX(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) translateX(var(--x-end)) rotate(var(--rotate-end));
+        opacity: 0;
+    }
+}
+
+.confetti-piece {
+    position: absolute;
+    animation: fall linear forwards;
+    z-index: 1001; /* Đảm bảo trên modal content */
 }
