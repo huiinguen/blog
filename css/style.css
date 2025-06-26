@@ -444,54 +444,11 @@ nav ul li a:hover::after {
     flex-wrap: wrap; /* Cho phép xuống dòng trên màn hình nhỏ */
 }
 
-.filter-btn {
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #fff;
-    padding: 12px 25px;
-    border-radius: 30px;
-    font-size: 1.05em;
-    cursor: pointer;
-    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
-    outline: none; /* Loại bỏ viền focus mặc định */
-}
-
-.filter-btn:hover {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.4);
-    transform: translateY(-2px);
-}
-
-.filter-btn.active {
-    background: #bd93f9; /* Màu tím nổi bật khi active */
-    border-color: #bd93f9;
-    color: #fff;
-    box-shadow: 0 4px 15px rgba(189, 147, 249, 0.4);
-    transform: translateY(-2px);
-}
-
 
 .blog-list {
     display: flex;
     flex-direction: column;
     gap: 30px;
-}
-
-.blog-list-item {
-    display: flex;
-    align-items: center;
-    padding: 25px;
-    border-radius: 15px;
-    background: rgba(255, 255, 255, 0.08);
-    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.blog-list-item:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
 }
 
 .blog-list-thumbnail {
@@ -662,11 +619,6 @@ footer {
         font-size: 0.9em;
         padding: 8px 15px;
     }
-    .blog-list-item {
-        flex-direction: column; /* Chuyển sang bố cục cột */
-        text-align: center;
-        align-items: center; /* Căn giữa các mục con theo chiều ngang (ảnh và nội dung) */
-    }
        .blog-list-thumbnail {
         width: 100%; /* Đảm bảo ảnh chiếm toàn bộ chiều rộng có sẵn */
         max-width: 350px; /* Giới hạn chiều rộng tối đa cho ảnh trên mobile để không quá to */
@@ -718,10 +670,6 @@ footer {
         font-size: 1em;
     }
 
-    .filter-btn {
-        padding: 10px 20px;
-        font-size: 0.95em;
-    }
 }
 /* CSS cho video responsive */
 .video-responsive {
