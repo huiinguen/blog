@@ -12,6 +12,7 @@
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Open+Sans:wght@300;400&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 </head>
 
 <body>
@@ -24,7 +25,7 @@
             <nav id="main-nav">
                 <ul>
                     <li><a href="index.html">Trang Chủ</a></li>
-                    <li><a href="blog.html">Blog</a></li>
+                    
                     <li><a href="travel.html" class="nav-active">Travel</a></li>
                     <li><a href="contact.html">Liên Hệ</a></li>
                 </ul>
@@ -36,7 +37,7 @@
         <section class="statistics-section section-padding fade-in-on-scroll">
             <div class="container">
                 <h2 class="section-title">Thống Kê Hành Trình</h2>
-                <div class="stats-container glass-card">
+                <div class="stats-container glass-card" id="statistics-block-to-capture">
                     <div class="stats-top-row">
                         <div class="stat-box completed-provinces-box">
                             <h3> <i class="fas fa-house-chimney home-icon"></i></h3>
@@ -51,28 +52,36 @@
                             <p><span id="total-score">0</span></p>
                         </div>
                     </div>
-                </div>
+                    <button id="share-achievement-btn" class="btn glass-btn share-btn">
+                        <i class="fas fa-share-alt"></i> Chia Sẻ Thành Tích
+                    </button>
+                    </div>
             </div>
         </section>
 
         <section class="provinces-list section-padding">
             <div class="container">
                 <h2 class="section-title">Các Tỉnh Thành Đã Ghé Thăm</h2>
-                <div class="provinces-grid" id="provinces-grid">
+                
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="province-search-input" class="glass-input" placeholder="Tìm kiếm tỉnh thành...">
                 </div>
+
+                <div class="provinces-grid" id="provinces-grid">
+                    </div>
             </div>
         </section>
 
         <div id="milestone-modal" class="modal">
-    <div class="modal-content glass-card">
-        <span class="close-button" id="close-milestone-modal">&times;</span>
-        <h3 id="milestone-title">Chúc mừng!</h3>
-        <p id="milestone-message"></p>
-        <div class="confetti-effect" id="confetti-effect"></div>
-    </div>
-</div>
+            <div class="modal-content glass-card">
+                <span class="close-button" id="close-milestone-modal">&times;</span>
+                <h3 id="milestone-title">Chúc mừng!</h3>
+                <p id="milestone-message"></p>
+                <div class="confetti-effect" id="confetti-effect"></div>
+            </div>
+        </div>
     </main>
-
 
     <div id="rank-modal" class="modal">
         <div class="modal-content glass-card">
@@ -83,12 +92,27 @@
         </div>
     </div>
 
+    <div id="share-modal" class="modal">
+        <div class="modal-content glass-card share-modal-content">
+            <span class="close-button" id="close-share-modal">&times;</span>
+            <h3>Chia Sẻ Thành Tích Của Bạn!</h3>
+            <p>Nhấp vào ảnh để tải về hoặc chọn mạng xã hội để chia sẻ.</p>
+            <div class="screenshot-preview-container">
+                <img id="screenshot-preview" src="" alt="Ảnh thành tích của bạn" class="screenshot-preview">
+            </div>
+         <div class="social-share-icons">
+                <a href="#" id="share-messenger" class="social-icon messenger" target="_blank" aria-label="Share on Messenger"><i class="fab fa-facebook-messenger"></i></a>
+                <a href="#" id="share-tiktok" class="social-icon tiktok" target="_blank" aria-label="Share on TikTok"><i class="fab fa-tiktok"></i></a>
+                <button id="share-native" class="social-icon native-share" aria-label="Chia sẻ qua ứng dụng khác">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
     <script src="js/main.js"></script>
     <script src="js/effects.js"></script>
-    <script src="js/travel.js"></script>
-
-    <script>
-        // JavaScript cho Hamburger Menu (lặp lại để đảm bảo hoạt động trên mọi trang)
+    
+    <script src="js/travel-data.js"></script>      <script src="js/travel-ranks.js"></script>      <script src="js/travel-milestone.js"></script>  <script src="js/travel-ui.js"></script>         <script src="js/travel.js"></script>            <script>
         const hamburgerMenu = document.getElementById('hamburger-menu');
         const mainNav = document.getElementById('main-nav');
 
