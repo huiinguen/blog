@@ -1,0 +1,131 @@
+/* css/camera.css */
+
+body {
+    margin: 0;
+    overflow: hidden; /* Hide scrollbars */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #000; /* Black background for camera feel */
+    font-family: 'Open Sans', sans-serif; /* Sử dụng font đã import trong style.css nếu muốn đồng bộ */
+}
+
+.camera-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Đảm bảo không có phần tràn ra */
+    background-color: #000; /* Nền đen */
+}
+
+#cameraFeed {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Quan trọng: Đảm bảo video lấp đầy không gian mà không bị méo */
+    /* transform: scaleX(-1); */ /* Bỏ comment nếu muốn camera trước bị lật ngang */
+}
+
+/* Nút thoát - cải tiến */
+.exit-button {
+    position: absolute;
+    top: 20px; /* Cách lề trên */
+    left: 20px; /* Cách lề trái */
+    background-color: rgba(0, 0, 0, 0.6); /* Nền tối trong suốt */
+    color: #fff; /* Chữ trắng */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Viền nhẹ */
+    border-radius: 25px; /* Bo tròn hơn */
+    padding: 10px 18px;
+    font-size: 1.1em;
+    cursor: pointer;
+    z-index: 11;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px); /* Hiệu ứng blur */
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.exit-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: translateY(-2px);
+}
+
+/* Nút chụp - cải tiến */
+.capture-button {
+    position: absolute;
+    bottom: 50px;
+    width: 80px;
+    height: 80px;
+    background-color: rgba(255, 255, 255, 0.2); /* Nền trong suốt hơn */
+    border: 5px solid rgba(255, 255, 255, 0.7); /* Viền rõ hơn */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+    z-index: 10;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6); /* Đổ bóng mạnh hơn */
+}
+
+.capture-button:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    border-color: rgba(255, 255, 255, 0.9);
+    transform: scale(1.05);
+}
+
+.capture-inner-circle {
+    width: 55px; /* Điều chỉnh kích thước vòng tròn bên trong */
+    height: 55px;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.capture-button:hover .capture-inner-circle {
+    background-color: #eee;
+}
+
+/* Ảnh chụp được hiển thị */
+#capturedPhoto {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Hiển thị ảnh vừa vặn trong khung */
+    background-color: #000; /* Nền đen khi hiển thị ảnh */
+    z-index: 5; /* Nằm dưới nút thoát và nút chụp (nếu chúng còn hiển thị) */
+}
+
+/* Canvas (ẩn) */
+#photoCanvas {
+    display: none; /* Luôn ẩn */
+}
+
+/* Responsive cho màn hình nhỏ hơn */
+@media (max-width: 768px) {
+    .exit-button {
+        top: 15px;
+        left: 15px;
+        padding: 8px 12px;
+        font-size: 0.9em; /* Giảm font size */
+        gap: 5px;
+    }
+    .capture-button {
+        width: 70px;
+        height: 70px;
+        bottom: 30px;
+    }
+    .capture-inner-circle {
+        width: 45px;
+        height: 45px;
+    }
+}
