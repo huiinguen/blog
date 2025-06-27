@@ -7,7 +7,9 @@ const milestoneModal = document.getElementById('milestone-modal');
 const closeMilestoneModalBtn = document.getElementById('close-milestone-modal');
 const milestoneTitle = document.getElementById('milestone-title');
 const milestoneMessage = document.getElementById('milestone-message');
-const confettiEffect = document.getElementById('confetti-effect');
+const milestoneNumberSpan = document.getElementById('milestone-number'); // Lấy element để hiển thị số chuỗi
+const confettiEffect = document.getElementById('confetti-effect'); // Nếu bạn có confetti effect
+
 
 function initializeMilestoneSystem(initialScore) {
     lastAchievedMilestone = Math.floor(initialScore / milestoneInterval) * milestoneInterval;
@@ -33,12 +35,11 @@ function checkMilestone(newScore, oldScore) {
 
 function showMilestoneModal(milestone) {
     milestoneTitle.textContent = `Chúc mừng bạn đã đạt chuỗi ${milestone}!`;
-    milestoneMessage.textContent = "Bạn thật tuyệt vời! Hãy tiếp tục khám phá nhé!";
+    milestoneNumberSpan.textContent = milestone; // Hiển thị số chuỗi
     milestoneModal.style.display = 'flex';
-    // triggerConfettiEffect(); // You can add confetti logic here if you have it
+    // triggerConfettiEffect(); // Bạn có thể gọi hàm triggerConfettiEffect() ở đây nếu đã định nghĩa nó
 }
 
 function closeMilestoneModal() {
     milestoneModal.style.display = 'none';
-    // clearConfettiEffect();
 }
