@@ -18,14 +18,14 @@
 <body>
     <header class="navbar-glass">
         <div class="container">
-            <a href="index.html" class="logo">huiinguyen</a>
+            <a href="index.html" class="logo">blog</a>
             <button class="hamburger-menu" id="hamburger-menu">
                 <i class="fas fa-bars"></i>
             </button>
             <nav id="main-nav">
                 <ul>
                     <li><a href="index.html">Trang Chủ</a></li>
-                    
+
                     <li><a href="travel.html" class="nav-active">Travel</a></li>
                     <li><a href="contact.html">Liên Hệ</a></li>
                 </ul>
@@ -52,33 +52,41 @@
                             <p><span id="total-score">0</span></p>
                         </div>
                     </div>
-                    <button id="share-achievement-btn" class="btn glass-btn share-btn">
-                        <i class="fas fa-share-alt"></i> Chia Sẻ Thành Tích
-                    </button>
+                    <div class="stats-buttons-row">
+                        <button id="capture-photo-btn" class="btn glass-btn capture-btn">
+                            <i class="fas fa-camera"></i> Chụp Ảnh
+                        </button>
+                        <button id="share-achievement-btn" class="btn glass-btn share-btn">
+                            <i class="fas fa-share-alt"></i> Chia Sẻ Thành Tích
+                        </button>
                     </div>
-            </div>
+                </div>
         </section>
 
         <section class="provinces-list section-padding">
             <div class="container">
                 <h2 class="section-title">Các Tỉnh Thành Đã Ghé Thăm</h2>
-                
+
                 <div class="search-container">
                     <i class="fas fa-search search-icon"></i>
-                    <input type="text" id="province-search-input" class="glass-input" placeholder="Tìm kiếm tỉnh thành...">
+                    <input type="text" id="province-search-input" class="glass-input"
+                        placeholder="Tìm kiếm tỉnh thành...">
                 </div>
 
                 <div class="provinces-grid" id="provinces-grid">
-                    </div>
+                </div>
             </div>
         </section>
 
         <div id="milestone-modal" class="modal">
             <div class="modal-content glass-card">
                 <span class="close-button" id="close-milestone-modal">&times;</span>
-                <h3 id="milestone-title">Chúc mừng!</h3>
+                <div class="milestone-icon-container">
+                    <i class="fas fa-fire flame-icon"></i> <span id="milestone-number" class="milestone-number"></span>
+                </div>
+                <h2 id="milestone-title"></h2>
                 <p id="milestone-message"></p>
-                <div class="confetti-effect" id="confetti-effect"></div>
+                <button class="btn" onclick="closeMilestoneModal()">Tuyệt vời!</button>
             </div>
         </div>
     </main>
@@ -96,13 +104,14 @@
         <div class="modal-content glass-card share-modal-content">
             <span class="close-button" id="close-share-modal">&times;</span>
             <h3>Chia Sẻ Thành Tích Của Bạn!</h3>
-            <p>Nhấp vào ảnh để tải về hoặc chọn mạng xã hội để chia sẻ.</p>
             <div class="screenshot-preview-container">
                 <img id="screenshot-preview" src="" alt="Ảnh thành tích của bạn" class="screenshot-preview">
             </div>
-         <div class="social-share-icons">
-                <a href="#" id="share-messenger" class="social-icon messenger" target="_blank" aria-label="Share on Messenger"><i class="fab fa-facebook-messenger"></i></a>
-                <a href="#" id="share-tiktok" class="social-icon tiktok" target="_blank" aria-label="Share on TikTok"><i class="fab fa-tiktok"></i></a>
+            <div class="social-share-icons">
+                <a href="#" id="share-messenger" class="social-icon messenger" target="_blank"
+                    aria-label="Share on Messenger"><i class="fab fa-facebook-messenger"></i></a>
+                <a href="#" id="share-tiktok" class="social-icon tiktok" target="_blank" aria-label="Share on TikTok"><i
+                        class="fab fa-tiktok"></i></a>
                 <button id="share-native" class="social-icon native-share" aria-label="Chia sẻ qua ứng dụng khác">
                     <i class="fas fa-share-alt"></i>
                 </button>
@@ -111,8 +120,13 @@
     </div>
     <script src="js/main.js"></script>
     <script src="js/effects.js"></script>
-    
-    <script src="js/travel-data.js"></script>      <script src="js/travel-ranks.js"></script>      <script src="js/travel-milestone.js"></script>  <script src="js/travel-ui.js"></script>         <script src="js/travel.js"></script>            <script>
+
+    <script src="js/travel-data.js"></script>
+    <script src="js/travel-ranks.js"></script>
+    <script src="js/travel-milestone.js"></script>
+    <script src="js/travel-ui.js"></script>
+    <script src="js/travel.js"></script>
+    <script>
         const hamburgerMenu = document.getElementById('hamburger-menu');
         const mainNav = document.getElementById('main-nav');
 
