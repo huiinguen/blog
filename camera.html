@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chụp Ảnh</title>
+    <link rel="stylesheet" href="css/camera.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="camera-container">
+        <button class="exit-button" onclick="window.history.back();">
+            <i class="fas fa-times"></i> </button>
+        <video id="cameraFeed" autoplay playsinline></video>
+        <button id="captureButton" class="capture-button">
+            <div class="capture-inner-circle"></div>
+        </button>
+        <canvas id="photoCanvas" style="display:none;"></canvas>
+        <img id="capturedPhoto" style="display:none;">
+    </div>
+
+    <script src="js/camera.js"></script>
+</body>
+</html>
