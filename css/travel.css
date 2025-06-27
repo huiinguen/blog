@@ -1,6 +1,3 @@
-/* Custom styles for Travel page */
-
-/* Loại bỏ phần hero-section và travel-intro cũ */
 .hero-travel, .travel-intro {
     display: none;
 }
