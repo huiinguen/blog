@@ -700,3 +700,45 @@ footer {
         max-width: 100%; /* Đảm bảo video chiếm toàn bộ chiều rộng có thể */
     }
 }
+/* Trong components.css hoặc style.css */
+
+/* Đảm bảo các thuộc tính cơ bản của nút */
+.btn {
+    display: inline-flex; /* Sử dụng flexbox để căn chỉnh icon và chữ */
+    align-items: center; /* Căn giữa dọc */
+    justify-content: center; /* Căn giữa ngang */
+    gap: 8px; /* Khoảng cách giữa icon và chữ */
+    padding: 10px 20px; /* Đảm bảo padding cố định */
+    border: none; /* Hoặc border cố định */
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    /* Chỉ transition cho transform, box-shadow và background-color */
+    position: relative; /* Quan trọng: Giúp transform không ảnh hưởng đến flow của các phần tử khác */
+    top: 0; /* Khởi tạo top cho translateY */
+}
+
+/* Hiệu ứng khi di chuột qua */
+.btn:hover {
+    transform: translateY(-2px); /* Nút nhô lên nhẹ khi hover */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Hiệu ứng khi nhấn nút */
+.btn:active {
+    /* CHỈ sử dụng transform để tạo hiệu ứng "nhấn xuống" */
+    transform: translateY(1px); /* Dịch chuyển nút xuống 1px */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Đổ bóng nhẹ hơn khi nhấn */
+    /* Đảm bảo KHÔNG thay đổi padding, margin, width, height ở đây */
+    /* Nếu có outline mặc định của trình duyệt, bạn có thể loại bỏ nó */
+    outline: none;
+}
+
+/* Đối với .glass-btn, nếu bạn có các hiệu ứng hover riêng, giữ chúng. */
+/* Đảm bảo .glass-btn:active cũng không thay đổi kích thước. */
+.glass-btn:active {
+    transform: translateY(1px); /* Áp dụng hiệu ứng nhấn tương tự */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    outline: none;
+}
